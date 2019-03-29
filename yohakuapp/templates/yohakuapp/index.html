@@ -1,0 +1,44 @@
+{%extends 'yohakuapp/base.html'%}
+
+{%block title_block%}
+    <title>Yooohaku!</title>
+{%endblock%}
+
+{%block links_block%}
+    <div><a href="#tweets">Tweets</a> </div>
+{%endblock%}
+
+{%block main_content%}
+    <form action='' id="post_tweet" method="post">
+
+      {%csrf_token%}
+        {%for hidden in form.hidden_fields%}
+            {{hidden}}
+        {%endfor%}
+
+        {%for field in form.visible_fields%}
+            {{field.errors}}
+            {{field.help_text}}
+            {{field}}
+        {%endfor%}
+          <input type="submit" value="share" name="submit" class="formSubmitButton">
+      </form>
+{%endblock%}
+
+{%block tweets_block%}
+  <div class='content'>
+    <div class='tweet-grid-container'>
+        <div class='tweet-grid'>
+            <h1 id="tweets">On People's minds</h1>
+            {%for tweet in list_of_tweets%}
+                <div class='tweet'>
+                    <p>{{tweet.tweet_content}}</p>
+                </div>
+            {%endfor%}
+        </div>
+    </div>
+  </div>
+{%endblock%}
+
+{%block additional_content%}
+{%endblock%}

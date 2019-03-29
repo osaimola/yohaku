@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang='en'>
+{%load static%}
+  <head>
+    <meta charset='UTF-8'/>
+    <meta name='viewport'
+      content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+
+    {%block title_block%}
+      <title>Yooohaku!</title>
+      {%endblock%}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'yohakuapp/yohakutheme.css' %}"/>
+  </head>
+
+
+  <body>
+    <div class='page'>
+      <div class ="section menu-container">
+        <div class='section menu'>
+          <div>Yooohaku!</div>
+          <div class='links'>
+              {%block links_block%}
+              {%endblock%}
+                <div class='last-link'><a href="#about">About</a></div>
+
+          </div>
+        </div>
+      </div>
+  <div class='section header'>
+    {%block main_content%}
+
+    {%endblock%}
+
+
+  </div>
+
+  {%block tweets_block%}
+  {%endblock%}
+
+  <div class='section sign-up'>
+    <h2 id="about">About Yooohaku</h2>
+    <p>Share you innermost thoughts anonymously</p>
+
+    <a href="https://twitter.com/yooohaku">follow us on twitter</a>
+    <a href="https://twitter.com/yooohaku"><img src="{% static 'yohakuapp/twitter_icon.png' %}"
+                                                style="width:40px;height:40px;"></a>
+  </div>
+
+  {%block additional_content%}
+  <div class='section feature-1'>
+    geature 1
+  </div>
+  <div class='section feature-2'>
+    feature 2
+  </div>
+  <div class='section feature-3'>
+    feature 3
+  </div>
+  {%endblock%}
+
+</div>
+  </body>
+</html>
