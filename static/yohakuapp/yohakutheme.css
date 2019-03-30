@@ -71,7 +71,8 @@ a:hover, a:active{
 
 .content {
   background-color: #EAEDF0;
-  height: 900px;
+  min-height: 400px;
+  max-height: 900px;
   width: 100%;
   overflow-y: auto;
 }
@@ -93,17 +94,23 @@ a:hover, a:active{
 }
 
 .tweet {
-  width: 60%;
+  width: 80%;
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: white;
-  padding:20px;
+  padding:10px;
+  font-size: medium;
   border-radius: 5px;
 }
 
 .sign-up {
   background-color: #D6E9FE;
-  flex-direction:column;
+    flex-direction: column;
+    min-height: 300px;
+    height: auto;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-align: center;
 }
 
 .feature-1 {
