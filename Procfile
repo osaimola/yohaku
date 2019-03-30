@@ -1,1 +1,1 @@
-web: gunicorn honestapp_project.wsgi --log-file -
+web: gunicorn yohaku.wsgi --log-file -
