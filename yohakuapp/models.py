@@ -9,7 +9,7 @@ class Tweet(models.Model):
     tweet_content = models.CharField(max_length=280, blank=False)
     tweet_intro = models.CharField(max_length=31, blank=True)
     publish_status = models.BooleanField(default=False)
-    date_created = models.DateTimeField(default=timezone.now())
+    date_created = models.DateTimeField()
     user_id = models.IntegerField(default=0)
 
     def save(self, *args, **kwargs):

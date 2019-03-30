@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.utils import timezone
 
 from yohakuapp.forms import TweetForm
 from yohakuapp.models import Tweet, Identity
@@ -11,18 +12,17 @@ import tweepy as tweepy
 
 # Create your views here.
 # TODO hide api key
-#CONSUMER_KEY = os.environ['CONSUMER_KEY']
-#CONSUMER_SECRET = os.environ['CONSUMER_SECRET']
-#ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
-#ACCESS_SECRET = os.environ['ACCESS_SECRET']
+CONSUMER_KEY = os.environ['CONSUMER_KEY']
+CONSUMER_SECRET = os.environ['CONSUMER_SECRET']
+ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
+ACCESS_SECRET = os.environ['ACCESS_SECRET']
 
 
 def setTwitterAuth():
-    #auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-    #auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
-    #api = tweepy.API(auth)
-    #return api
-    pass
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
+    api = tweepy.API(auth)
+    return api
 
 
 def makeTweet(api, tweet):
@@ -37,6 +37,7 @@ def index(request):
 
         if form.is_valid():
             pending_tweet = form.save(commit=False)
+            pending_tweet.date_created = timezone.now()
 
             # TODO handle tweets longer than 280 characters and update tweet model to reflect
             api = setTwitterAuth()
