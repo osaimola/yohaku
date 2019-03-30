@@ -30,11 +30,15 @@
     <div class='tweet-grid-container'>
         <div class='tweet-grid'>
             <h1 id="tweets">On People's minds</h1>
+            {%if list_of_tweets%}
             {%for tweet in list_of_tweets%}
                 <div class='tweet'>
                     <p>{{tweet.tweet_content}}</p>
                 </div>
             {%endfor%}
+            {%else%}
+                <p>No thoughts shared yet...</p>
+            {%endif%}
         </div>
     </div>
   </div>
