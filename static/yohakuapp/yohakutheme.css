@@ -62,8 +62,11 @@ a:hover, a:active{
 }
 
 .header {
-  background-color: #B2D6FF;
-  flex-direction:column;
+    background-color: #B2D6FF;
+    width: 100%;
+    flex-direction: column;
+    padding: 10%;
+    height: 300px;
 }
 
 .content {
