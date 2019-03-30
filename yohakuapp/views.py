@@ -5,13 +5,16 @@ from django.urls import reverse
 from yohakuapp.forms import TweetForm
 from yohakuapp.models import Tweet, Identity
 
-from boto.s3.connection import S3Connection
+import os
 
 import tweepy as tweepy
 
 # Create your views here.
 #TODO hide api key
-s3 = S3Connection(os.environ['CONSUMER_KEY'], os.environ['CONSUMER_SECRET'], os.environ['ACCESS_TOKEN'], os.environ['ACCESS_SECRET'])
+CONSUMER_KEY = os.environ['CONSUMER_KEY']
+CONSUMER_SECRET = os.environ['CONSUMER_SECRET']
+ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
+ACCESS_SECRET = os.environ['ACCESS_SECRET']
 
 
 def setTwitterAuth():
