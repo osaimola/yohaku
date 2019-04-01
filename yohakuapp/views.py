@@ -60,7 +60,14 @@ def index(request):
 
             pending_tweet.publish_status = True
 
-            # TODO update anonymous USERID and save to pending tweet
+            # store an anonymous identifier in request.session
+            anonymous_id = request.session.get('anonymous_id')
+            if not anonymous_id:
+                identifier = Identity.objects.get(pk=1)
+                request.session['anonymous_id'] = pending_tweet.user_id = identifier.get_new_id()
+            else:
+                pending_tweet.user_id = int(anonymous_id)
+
             pending_tweet.save()
             return HttpResponseRedirect(reverse('yohakuapp:index'))
         else:
