@@ -26,6 +26,7 @@ class Identity(models.Model):
 
     def get_new_id(self):
         self.id_count += 1
+        self.save()
         #consider replacing with F function
         return self.id_count - 1
 

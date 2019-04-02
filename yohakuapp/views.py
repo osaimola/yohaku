@@ -49,9 +49,9 @@ def index(request):
                 tweet_text = pending_tweet.tweet_content
                 a = 0
                 b = 272
-                c = math.ceil((len(tweet_text))/272)
+                c = math.ceil((len(tweet_text)) / 272)
                 for z in range(c):
-                    makeTweet(api, (tweet_text[a:b] + " [" + str(z+1) + "/" + str(c) + "]"))
+                    makeTweet(api, (tweet_text[a:b] + " [" + str(z + 1) + "/" + str(c) + "]"))
                     a += 272
                     b += 272
                     time.sleep(1)
@@ -61,12 +61,7 @@ def index(request):
             pending_tweet.publish_status = True
 
             # store an anonymous identifier in request.session
-            anonymous_id = request.session.get('anonymous_id')
-            if not anonymous_id:
-                identifier = Identity.objects.get(pk=1)
-                request.session['anonymous_id'] = pending_tweet.user_id = identifier.get_new_id()
-            else:
-                pending_tweet.user_id = int(anonymous_id)
+            anonymize(request=request, pending_tweet=pending_tweet)
 
             pending_tweet.save()
             return HttpResponseRedirect(reverse('yohakuapp:index'))
@@ -80,3 +75,16 @@ def index(request):
     list_of_tweets = Tweet.objects.all().order_by('-date_created')
     context['list_of_tweets'] = list_of_tweets
     return render(request, 'yohakuapp/index.html', context)
+
+
+def anonymize(request, pending_tweet):
+    """use sessions to set or retrieve an anonymous tag"""
+    anonymous_id = request.session.get('anonymous_id', False)
+    if anonymous_id:
+        pending_tweet.user_id = int(anonymous_id)
+    else:
+        identifier = Identity.objects.get(pk=1)
+        new_id = identifier.get_new_id()
+        request.session['anonymous_id'] = new_id
+        request.session.save()
+        pending_tweet.user_id = new_id

@@ -130,5 +130,5 @@ STATICFILES_DIRS = (
 # settings for heroku
 django_heroku.settings(locals())
 
-# set sessions to last maximum time supported by database
-SESSION_COOKIE_AGE = 0
+# set sessions to last maximum time supported by database 3 months
+SESSION_COOKIE_AGE = 7884010
