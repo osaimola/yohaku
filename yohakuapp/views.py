@@ -44,6 +44,7 @@ def index(request):
             pending_tweet.date_created = timezone.now()
 
             # handle cases where tweets are longer than standard 280 characters
+            # TODO refactor long tweet handling and add test to validate
             api = setTwitterAuth()
             if len(pending_tweet.tweet_content) > 280:
                 tweet_text = pending_tweet.tweet_content
@@ -61,7 +62,7 @@ def index(request):
             pending_tweet.publish_status = True
 
             # store an anonymous identifier in request.session
-            anonymize(request=request, pending_tweet=pending_tweet)
+            anonymize(session=request.session, pending_tweet=pending_tweet)
 
             pending_tweet.save()
             return HttpResponseRedirect(reverse('yohakuapp:index'))
@@ -77,14 +78,14 @@ def index(request):
     return render(request, 'yohakuapp/index.html', context)
 
 
-def anonymize(request, pending_tweet):
+def anonymize(session, pending_tweet):
     """use sessions to set or retrieve an anonymous tag"""
-    anonymous_id = request.session.get('anonymous_id', False)
+    anonymous_id = session.get('anonymous_id', False)
     if anonymous_id:
         pending_tweet.user_id = int(anonymous_id)
     else:
         identifier = Identity.objects.get(pk=1)
         new_id = identifier.get_new_id()
-        request.session['anonymous_id'] = new_id
-        request.session.save()
+        session['anonymous_id'] = new_id
+        session.save()
         pending_tweet.user_id = new_id
