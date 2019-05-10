@@ -1,66 +1,66 @@
 <!DOCTYPE html>
 <html lang='en'>
 {%load static%}
-  <head>
+<head>
     <meta charset='UTF-8'/>
     <meta name='viewport'
-      content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+          content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
 
     {%block title_block%}
-      <title>Yooohaku!</title>
-      {%endblock%}
+    <title>Yooohaku!</title>
+    {%endblock%}
 
     <link rel="stylesheet" type="text/css" href="{% static 'yohakuapp/yohakutheme.css' %}"/>
     <link rel="icon" href="{% static 'yohakuapp/yohaku.png' %}"/>
-  </head>
+</head>
 
 
-  <body>
-    <div class='page'>
-      <div class ="section menu-container">
+<body>
+<div class='page'>
+    <div class ="section menu-container">
         <div class='section menu'>
-          <div>Yooohaku!</div>
-          <div class='links'>
-              {%block links_block%}
-              {%endblock%}
+            <div>Yooohaku!</div>
+            <div class='links'>
+                {%block links_block%}
+                {%endblock%}
                 <div class='last-link'><a href="#about">About</a></div>
 
-          </div>
+            </div>
         </div>
-      </div>
+    </div>
 
-  <div class='header'>
-    {%block main_content%}
+    <div class='header'>
+        {%block main_content%}
 
+        {%endblock%}
+    </div>
+
+    {%block tweets_block%}
     {%endblock%}
-  </div>
 
-  {%block tweets_block%}
-  {%endblock%}
+    <div class='section sign-up'>
+        <h2 id="about">About Yooohaku</h2>
+        <p>Yooohaku lets you share you innermost thoughts anonymously</p>
+        <p>All thoughts shared are publicly visible here and on our twitter account (@yooohaku)
+            but do not contain any information about who shared them</p>
 
-  <div class='section sign-up'>
-    <h2 id="about">About Yooohaku</h2>
-      <p>Yooohaku lets you share you innermost thoughts anonymously</p>
-      <p>All thoughts shared are publicly visible here and on our twitter account (@yooohaku)
-        but do not contain any information about who shared them</p>
+        <a href="https://twitter.com/yooohaku">follow us on twitter</a>
+        <a href="https://twitter.com/yooohaku"><img src="{% static 'yohakuapp/twitter_icon.png' %}"
+                                                    style="width:35px;height:35px;"></a>
+    </div>
 
-    <a href="https://twitter.com/yooohaku">follow us on twitter</a>
-    <a href="https://twitter.com/yooohaku"><img src="{% static 'yohakuapp/twitter_icon.png' %}"
-                                                style="width:35px;height:35px;"></a>
-  </div>
-
-  {%block additional_content%}
-  <div class='section feature-1'>
-    geature 1
-  </div>
-  <div class='section feature-2'>
-    feature 2
-  </div>
-  <div class='section feature-3'>
-    feature 3
-  </div>
-  {%endblock%}
+    {%block additional_content%}
+    <div class='section feature-1'>
+        geature 1
+    </div>
+    <div class='section feature-2'>
+        feature 2
+    </div>
+    <div class='section feature-3'>
+        feature 3
+    </div>
+    {%endblock%}
 
 </div>
-  </body>
+</body>
 </html>
