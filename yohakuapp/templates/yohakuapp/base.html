@@ -28,7 +28,7 @@
 
 <body class='h-full bg-gray-100'>
   <div class='h-full'>
-    <div class='fixed top-0 left-0 right-0 mt-5 lg:mt-8 flex justify-center'>
+    <div id='search_container' class='fixed top-0 left-0 right-0 mt-5 lg:mt-8 flex flex-col items-center'>
       <form action='' id='search_tweets' method='get' class='flex items-center'>
         <div
           id='search_icon'
@@ -47,6 +47,10 @@
           value={{query_string}}
         >
       </form>
+      
+      {% if query_string %}
+        <a id='clear_results' href="{% url 'yohakuapp:index' %}" class='transition transform "translate-y-3.5" sr-only shadow-sm py-2 px-3 bg-white text-red-500 hover:text-white  font-semibold rounded-full border border-gray-200 hover:border-red-500 hover:bg-red-500 cursor-pointer'>Clear Results</a>
+      {% endif %}
     </div>
 
     {%block tweets_block%}
@@ -121,7 +125,6 @@
         </div>
       </div>
     </div>
-
 
     <button
       id='open_form'
