@@ -4,45 +4,26 @@
     <title>Yooohaku!</title>
 {%endblock%}
 
-{%block links_block%}
-    <div><a href="#tweets">Tweets</a> </div>
-{%endblock%}
 
-{%block main_content%}
-    <form action='' id="post_tweet" method="post">
 
-      {%csrf_token%}
-        {%for hidden in form.hidden_fields%}
-            {{hidden}}
-        {%endfor%}
-
-        {%for field in form.visible_fields%}
-            {{field.errors}}
-            {{field.help_text}}
-            {{field}}
-        {%endfor%}
-          <input type="submit" value="share" name="submit" class="formSubmitButton">
-      </form>
-{%endblock%}
 
 {%block tweets_block%}
-  <div class='content'>
-    <div class='tweet-grid-container'>
-        <div class='tweet-grid'>
-            <h1 id="tweets">On People's minds</h1>
-            {%if list_of_tweets%}
+    <div class='py-24 lg:pt-28 h-screen overflow-y-scroll'>
+      <!-- <div class='h-full'> -->
+        <h1 class="text-center text-3xl mb-4 md:mb-6 font-semibold text-gray-700">On People's minds</h1>
+        {%if list_of_tweets%}
+          <div class="">
             {%for tweet in list_of_tweets%}
-                <div class='tweet'>
+                <div class='border-b-2 border-gray-300 bg-white py-4 px-8 md:px-20 mb-1.5 md:mb-4 shadow'>
                     <p>{{tweet.tweet_content}}</p>
                 </div>
             {%endfor%}
-            {%else%}
-                <p>No thoughts shared yet...</p>
-            {%endif%}
-        </div>
+          </div>
+        {%else%}
+          <div class='flex items-center justify-center h-full'>
+            <p class='text-gray-600 font-bold'>No thoughts shared yet... 💭</p>
+          </div>
+        {%endif%}
+      <!-- </div> -->
     </div>
-  </div>
-{%endblock%}
-
-{%block additional_content%}
 {%endblock%}

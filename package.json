@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "build": "tailwindcss build frontend/site.css -c frontend/tailwind.config.js -o static/site.css"
+  },
+  "engines": {
+    "node": "15.x"
+  },
+  "dependencies": {
+    "@jinsung.lim/tailwindcss-filters": "^0.1.1",
+    "autoprefixer": "^10.2.5",
+    "tailwindcss": "^2.0.4"
+  }
+}

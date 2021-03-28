@@ -72,8 +72,18 @@ def index(request):
     else:
         form = TweetForm()
 
+    try:
+        query = request.GET['q']
+    except KeyError:
+        query = ''  # if our query string is empty
+    
     context['form'] = form
-    list_of_tweets = Tweet.objects.all().order_by('-date_created')
+    context['query_string'] = query
+
+    if query:
+        list_of_tweets = Tweet.objects.filter(tweet_content__icontains=query.lower()).order_by('-date_created')
+    else:
+        list_of_tweets = Tweet.objects.all().order_by('-date_created')
     context['list_of_tweets'] = list_of_tweets
     return render(request, 'yohakuapp/index.html', context)
 
@@ -84,7 +94,7 @@ def anonymize(session, pending_tweet):
     if anonymous_id:
         pending_tweet.user_id = int(anonymous_id)
     else:
-        identifier = Identity.objects.get(pk=1)
+        identifier = Identity.objects.get_or_create(pk=1)
         new_id = identifier.get_new_id()
         session['anonymous_id'] = new_id
         session.save()
