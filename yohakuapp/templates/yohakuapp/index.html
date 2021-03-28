@@ -8,13 +8,12 @@
 
 
 {%block tweets_block%}
-    <div class='py-24 lg:pt-28 h-full overflow-y-scroll'>
-      <!-- <div class='h-full'> -->
-        <h1 class="text-center text-3xl mb-4 md:mb-6 font-semibold text-gray-700">On People's minds</h1>
-        {%if list_of_tweets%}
-          <div>
+    <div class='h-full overflow-y-scroll'>
+        <h1 class="text-center text-3xl mt-24 lg:mt-28 mb-4 md:mb-6 font-semibold text-gray-700">On People's minds</h1>
+        {%if not list_of_tweets%}
+          <div class="mb-24">
             {%for tweet in list_of_tweets%}
-                <div class='border-b-2 border-gray-300 bg-white py-5 px-8 md:px-20'>
+                <div class='border-b border-gray-300 bg-white py-5 px-8 md:px-20'>
                     <p>{{tweet.tweet_content}}</p>
                 </div>
             {%endfor%}
@@ -24,6 +23,5 @@
             <p class='text-gray-600 font-bold'>No thoughts shared yet... 💭</p>
           </div>
         {%endif%}
-      <!-- </div> -->
     </div>
 {%endblock%}
