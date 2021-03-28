@@ -28,7 +28,7 @@
 
 <body class='h-full bg-gray-100'>
   <div class='h-full'>
-    <div class='absolute top-0 left-0 right-0 mt-5 lg:mt-8 flex justify-center'>
+    <div class='fixed top-0 left-0 right-0 mt-5 lg:mt-8 flex justify-center'>
       <form action='' id='search_tweets' method='get' class='flex items-center'>
         <div
           id='search_icon'
@@ -53,7 +53,7 @@
     {%endblock%}
 
     <div
-      class='h-full hidden absolute z-20 bottom-0 right-0 left-0 flex flex-col justify-end backdrop backdrop-blur-5'
+      class='h-full hidden fixed z-20 bottom-0 right-0 left-0 flex flex-col justify-end backdrop backdrop-blur-5'
       id='form'
     >
       <button
@@ -85,19 +85,18 @@
                   id="id_tweet_content"
                   placeholder="Whats on your mind..."
                   ></textarea>
-                <input
+                <button
                   type="submit"
-                  value="Share"
                   name="submit"
-                  class="w-full rounded-lg px-1.5 py-2 bg-brand-blue hover:bg-blue-700 transition mt-4 font-semibold text-white cursor-pointer"
-                >
+                  class="w-full rounded-lg px-1.5 py-2 bg-brand-blue hover:bg-blue-700 transition mt-4 font-semibold text-white text-lg cursor-pointer"
+                >Share <i class="far fa-paper-plane ml-2"></i></button>
             </form>
         </div>
       </div>
     </div>
 
     <div
-      class='h-full hidden absolute z-20 bottom-0 right-0 left-0 flex flex-col justify-end backdrop backdrop-blur-5'
+      class='h-full hidden fixed z-20 bottom-0 right-0 left-0 flex flex-col justify-end backdrop backdrop-blur-5'
       id='about'
     >
       <button
@@ -126,13 +125,13 @@
 
     <button
       id='open_form'
-      class="absolute bottom-20 right-5 w-14 h-14 border-2 border-brand-blue shadow-md hover:shadow-lg focus:shadow-lg rounded-full focus:outline-none bg-white text-gray-700 hover:text-blue-700 focus:text-blue-700 transition transform hover:-rotate-45 focus:-rotate-45"
+      class="fixed bottom-20 right-5 w-14 h-14 border-2 border-brand-blue shadow-md hover:shadow-lg focus:shadow-lg rounded-full focus:outline-none bg-white text-gray-700 hover:text-blue-700 focus:text-blue-700 transition transform hover:-rotate-45 focus:-rotate-45"
       >
       <p class='sr-only'>Share New Tweet</p>
       <i class="fas fa-feather text-xl"></i>
     </button>
-    
-    <nav class='flex justify-between px-10 md:px-40 py-4 border-t shadow-md border-gray-400 z-10 bg-white absolute bottom-0 left-0 right-0'>
+
+    <nav class='flex justify-between px-10 md:px-40 py-4 border-t shadow-md border-gray-400 z-10 bg-white fixed bottom-0 left-0 right-0'>
       <a href='https://twitter.com/yooohaku' class='text-2xl text-gray-700 hover:text-brand-blue focus:text-brand-blue transition cursor-pointer'>
         <p class='sr-only'>Visit Yohaku on Twitter</p>
         <i class="fab fa-twitter"></i>
