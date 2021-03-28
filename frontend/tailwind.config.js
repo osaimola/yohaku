@@ -1,10 +1,10 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  purge: ["../yohakuapp/templates/**/*.html"],
+  purge: ["yohakuapp/templates/**/*.html"],
   // purge: {
   //   enabled: true,
-  //   content: ["../yohakuapp/templates/**/*.html"],
+  //   content: ["yohakuapp/templates/**/*.html"],
   // },
   darkMode: false, // or 'media' or 'class'
   theme: {
