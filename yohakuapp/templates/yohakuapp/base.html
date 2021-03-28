@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang='en' class='h-full'>
 {%load static%}
 <head>
     <meta charset='UTF-8'/>
@@ -26,8 +26,8 @@
 </head>
 
 
-<body>
-<div class='relative bg-gray-100'>
+<body class='h-full bg-gray-100'>
+<div class='relative h-full'>
   <div class='absolute top-0 left-0 right-0 mt-5 lg:mt-8 flex justify-center'>
     <form action='' id='search_tweets' method='get' class='flex items-center'>
       <div
@@ -40,7 +40,7 @@
       <input
         class="rounded-lg py-2.5 px-4 outline-none shadow-md border-2 border-gray-300 focus:border-brand-blue hover:border-brand-blue"
         type='search'
-        placeholder="search thought"
+        placeholder="Search thoughts.."
         name='q'
         id='search'
         autocomplete="off"
@@ -53,7 +53,7 @@
     {%endblock%}
 
     <div
-      class='h-screen hidden absolute z-20 bottom-0 right-0 left-0 flex flex-col justify-end backdrop backdrop-blur-5'
+      class='h-full hidden absolute z-20 bottom-0 right-0 left-0 flex flex-col justify-end backdrop backdrop-blur-5'
       id='form'
     >
       <button
@@ -97,7 +97,7 @@
     </div>
 
     <div
-      class='h-screen hidden absolute z-20 bottom-0 right-0 left-0 flex flex-col justify-end backdrop backdrop-blur-5'
+      class='h-full hidden absolute z-20 bottom-0 right-0 left-0 flex flex-col justify-end backdrop backdrop-blur-5'
       id='about'
     >
       <button
@@ -126,7 +126,7 @@
 
     <button
       id='open_form'
-      class="absolute bottom-20 right-5 w-14 h-14 border-2 border-brand-blue shadow-md hover:shadow-lg focus:shadow-lg rounded-full outline-none bg-white text-gray-700 hover:text-blue-700 focus:text-blue-700 transition transform hover:-rotate-45 focus:-rotate-45"
+      class="absolute bottom-20 right-5 w-14 h-14 border-2 border-brand-blue shadow-md hover:shadow-lg focus:shadow-lg rounded-full focus:outline-none bg-white text-gray-700 hover:text-blue-700 focus:text-blue-700 transition transform hover:-rotate-45 focus:-rotate-45"
       >
       <p class='sr-only'>Share New Tweet</p>
       <i class="fas fa-feather text-xl"></i>
@@ -138,7 +138,7 @@
         </a>
         <button
           id='open_about'
-          class='text-2xl text-gray-700 hover:text-brand-blue focus:text-brand-blue cursor-pointer transition outline-none'
+          class='text-2xl text-gray-700 hover:text-brand-blue focus:text-brand-blue cursor-pointer transition focus:outline-none'
           >
           <p class='sr-only'>About Yohaku</p>
           <i class="fas fa-info"></i>

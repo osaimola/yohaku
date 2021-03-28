@@ -8,13 +8,13 @@
 
 
 {%block tweets_block%}
-    <div class='py-24 lg:pt-28 h-screen overflow-y-scroll'>
+    <div class='py-24 lg:pt-28 h-full overflow-y-scroll'>
       <!-- <div class='h-full'> -->
         <h1 class="text-center text-3xl mb-4 md:mb-6 font-semibold text-gray-700">On People's minds</h1>
         {%if list_of_tweets%}
-          <div class="">
+          <div>
             {%for tweet in list_of_tweets%}
-                <div class='border-b-2 border-gray-300 bg-white py-4 px-8 md:px-20 mb-1.5 md:mb-4 shadow'>
+                <div class='border-b-2 border-gray-300 bg-white py-5 px-8 md:px-20'>
                     <p>{{tweet.tweet_content}}</p>
                 </div>
             {%endfor%}
