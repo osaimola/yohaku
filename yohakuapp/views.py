@@ -94,7 +94,7 @@ def anonymize(session, pending_tweet):
     if anonymous_id:
         pending_tweet.user_id = int(anonymous_id)
     else:
-        identifier = Identity.objects.get_or_create(pk=1)
+        (identifier, created) = Identity.objects.get_or_create(pk=1)
         new_id = identifier.get_new_id()
         session['anonymous_id'] = new_id
         session.save()
